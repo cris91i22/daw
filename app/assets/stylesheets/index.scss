@@ -1,0 +1,114 @@
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+  a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    &:hover:not(.active) {
+      background-color: #111;
+    }
+  }
+}
+
+.active {
+  background-color: #4CAF50;
+}
+
+.main {
+  background-color: #333;
+  padding: 25px;
+  height: 1650px;
+}
+
+.acronym {
+  text-align: center;
+}
+
+.title {
+  text-align: center;
+  color: #4CAF50;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin-bottom: 3px;
+}
+
+.section1 {
+  float: left;
+  margin-left: 10px;
+  padding: 10px;
+  width: 31%;
+  height: 475px;
+  color: #CCC;
+  font-size: 17px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  border: 4px solid #7F4D23;
+  border-radius: 5px;
+  p {
+    color: white;
+  }
+}
+
+.section2 {
+  float: left;
+  margin-left: 10px;
+  padding: 10px;
+  width: 62%;
+  height: 435px;
+  color: #CCC;
+  font-size: 17px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  border: 4px solid #7F4D23;
+  border-radius: 5px;
+}
+
+.myAccount {
+  float: right;
+  font-weight: bold;
+  text-decoration: underline;
+  a {
+    color: #4CAF50;
+  }
+}
+
+.portada {
+  width: 100%;
+  height: 450px;
+  margin-top: 10px;
+}
+
+.mainSection {
+  margin-top: 30px;
+  height: 530px;
+}
+
+.titleSection {
+  color: #4CAF50;
+  text-align: center;
+}
+
+.clientSection {
+  width: 100%;
+  height: 500px;
+}
+
+.clientesImg {
+  width: 35%;
+  height: 450px;
+  margin-top: 10px;
+  float: left;
+}
+
+.footer {
+  text-align: center;
+  color: #CCC;
+  height: 90px;
+}
