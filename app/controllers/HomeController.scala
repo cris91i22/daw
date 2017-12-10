@@ -10,11 +10,6 @@ class HomeController @Inject()(cc: ControllerComponents) extends AbstractControl
     Ok(views.html.index("Your new application is ready."))
   }
 
-  val bolsonesk = Seq(Bolsones("0", "Justo para vos (JPV)", Seq("Aji", "Ajo", "Acelga", "Tomates"), 15, "caja1"),
-    Bolsones("1", "Familia Tipo (FTP)", Seq("Aji", "Ajo", "Acelga", "Tomates", "Calabaza", "Repollo"), 20, "caja2"),
-    Bolsones("2", "Familia numerosa (FNM)", Seq("Aji", "Ajo", "Acelga", "Tomates", "Calabaza", "Repollo", "Pera", "Wiki", "Manzana"), 25, "caja3"))
-
-
   def bolsones = Action { implicit request =>
     val bolsones = Seq(Bolsones("0", "Justo para vos (JPV)", Seq("Aji", "Ajo", "Acelga", "Tomates"), 15, "images/caja1.jpg"),
       Bolsones("1", "Familia Tipo (FTP)", Seq("Aji", "Ajo", "Acelga", "Tomates", "Calabaza", "Repollo"), 20, "images/caja2.jpg"),
@@ -23,21 +18,26 @@ class HomeController @Inject()(cc: ControllerComponents) extends AbstractControl
   }
 
   def frutas = Action { implicit request =>
-    Ok(views.html.bolsones(bolsonesk))
+    val text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus a urna et nulla dapibus venenatis."
+    val frutas = Seq(Fruta("Futa1", text), Fruta("Futa1", text), Fruta("Futa1", text), Fruta("Futa1", text),
+      Fruta("Futa1", text), Fruta("Futa1", text), Fruta("Futa1", text), Fruta("Futa1", text))
+    Ok(views.html.frutas(frutas))
   }
 
   def verduras = Action { implicit request =>
-    Ok(views.html.bolsones(bolsonesk))
+    NoContent
   }
 
   def sucursales = Action { implicit request =>
-    Ok(views.html.bolsones(bolsonesk))
+    NoContent
   }
 
   def blog = Action { implicit request =>
-    Ok(views.html.bolsones(bolsonesk))
+    NoContent
   }
 
 }
 
 case class Bolsones(id: String, name: String, contents: Seq[String], price: BigDecimal, img: String)
+
+case class Fruta(name: String, description: String)

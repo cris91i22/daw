@@ -3,7 +3,7 @@
 @(bolsones: Seq[Bolsones])(implicit request: RequestHeader)
 
 @main("") {
-    <div class="main-bolsones">
+    <div>
         <header>
             <h1 class="title">Mi Huerta Orgánica</h1>
             <section class="acronym">
@@ -24,7 +24,7 @@
 
         <div class="container-fluid bg-3 text-center">
             <h3>Bolsones con los que contamos</h3><br>
-            <div class="row">
+            <div class="row bolsones">
                 @for(bolson <- bolsones) {
                     <div id="bolson" class="bolson col-sm-4">
                         <p>@bolson.name</p>

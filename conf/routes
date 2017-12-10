@@ -10,8 +10,6 @@ GET    /verduras                    controllers.HomeController.verduras
 GET    /sucursales                  controllers.HomeController.sucursales
 GET    /blog                        controllers.HomeController.blog
 
-# An example controller showing how to use dependency injection
-GET     /count                      controllers.CountController.count
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)

@@ -119,7 +119,7 @@ li {
   color: $color-letras;
 }
 
-.row {
+.bolsones {
   color: $color-letras;
   p {
     font-size: 25px;
@@ -146,4 +146,17 @@ li {
     border: 4px solid #436148;
     padding: 20px;
   }
+}
+
+.frutas {
+  margin-top: 20px;
+  .desc {
+    text-align: left;
+    font-size: 16px;
+  }
+}
+
+.frutas-items {
+  margin-top: 35px;
+  text-align: left;
 }
