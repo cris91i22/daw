@@ -1,7 +1,6 @@
 @(message: String)
 
 @main("") {
-
     <header>
         <h1 class="title">Mi Huerta Orgánica</h1>
         <section class="acronym">
@@ -10,11 +9,11 @@
         <section>
             <ul id="main">
                 <li><a class="active" href="home.html">Home</a></li>
-                <li><a href="bolsones.html">Bolsones</a></li>
-                <li><a href="frutas.html">Frutas</a></li>
-                <li><a href="verduras.html">Verduras</a></li>
-                <li><a href="sucursales.html">Sucursales</a></li>
-                <li><a href="blog.html">Blog</a></li>
+                <li><a href="@controllers.routes.HomeController.bolsones()">Bolsones</a></li>
+                <li><a href="@controllers.routes.HomeController.frutas()">Frutas</a></li>
+                <li><a href="@controllers.routes.HomeController.verduras()">Verduras</a></li>
+                <li><a href="@controllers.routes.HomeController.sucursales()">Sucursales</a></li>
+                <li><a href="@controllers.routes.HomeController.blog()">Blog</a></li>
                 <li class="myAccount"><a href="login.html">Mi Cuenta</a></li>
             </ul>
         </section>
@@ -73,5 +72,4 @@
         <p>Created by: Cristian Medina</p>
         <p>Contact information: <a href="mailto:someone@@example.com">cris91i22@@gmail.com</a>.</p>
     </footer>
-
 }

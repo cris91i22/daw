@@ -1,3 +1,5 @@
+$color-letras: #CCC;
+
 ul {
   list-style-type: none;
   margin: 0;
@@ -27,7 +29,6 @@ li {
 .main {
   background-color: #333;
   padding: 25px;
-  height: 1650px;
 }
 
 .acronym {
@@ -43,11 +44,11 @@ li {
 
 .section1 {
   float: left;
-  margin-left: 10px;
+  margin-left: 30px;
   padding: 10px;
   width: 31%;
   height: 475px;
-  color: #CCC;
+  color: $color-letras;
   font-size: 17px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   border: 4px solid #7F4D23;
@@ -62,8 +63,8 @@ li {
   margin-left: 10px;
   padding: 10px;
   width: 62%;
-  height: 435px;
-  color: #CCC;
+  height: 490px;
+  color: $color-letras;
   font-size: 17px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   border: 4px solid #7F4D23;
@@ -109,6 +110,40 @@ li {
 
 .footer {
   text-align: center;
-  color: #CCC;
+  color: $color-letras;
   height: 90px;
+  margin-top: 70px;
+}
+
+.text-center {
+  color: $color-letras;
+}
+
+.row {
+  color: $color-letras;
+  p {
+    font-size: 25px;
+  }
+}
+
+.descripcion {
+  h3 {
+    color: #4CAF50;
+  }
+  .price {
+    color: green;
+    font-size: 20px;
+  }
+}
+
+.order {
+  display: none;
+  padding-top: 50px;
+  .delivery {
+    color: black;
+  }
+  .pedido {
+    border: 4px solid #436148;
+    padding: 20px;
+  }
 }
