@@ -1,0 +1,49 @@
+@import controllers.Sucursal
+
+@(sucursales: Seq[Sucursal])
+
+
+@main("") {
+    <div>
+        <header>
+            <h1 class="title">Mi Huerta Orgánica</h1>
+            <section class="acronym">
+                <abbr class="title" title="Ventas al por mayor y por menor">Delivery de frutas y verduras</abbr>
+            </section>
+            <section>
+                <ul id="main">
+                    <li><a href="@controllers.routes.HomeController.index()">Home</a></li>
+                    <li><a href="@controllers.routes.HomeController.bolsones()">Bolsones</a></li>
+                    <li><a href="@controllers.routes.HomeController.frutas()">Frutas</a></li>
+                    <li><a href="@controllers.routes.HomeController.verduras()">Verduras</a></li>
+                    <li><a class="active" href="@controllers.routes.HomeController.sucursales()">Sucursales</a></li>
+                    <li><a href="@controllers.routes.HomeController.faq()">FAQ</a></li>
+                    <li class="myAccount"><a href="login.html">Mi Cuenta</a></li>
+                </ul>
+            </section>
+        </header>
+
+        <div class="container-fluid bg-3 text-center">
+            <h3>Sucursales disponibles</h3>
+            <div class="row">
+            @for(sucursal <- sucursales) {
+                <div class="sucursales-items col-sm-6">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <p><b>Nombre:</b> @sucursal.name</p>
+                            @if(sucursal.location.nonEmpty) {
+                                <p><b>Direccion:</b> @sucursal.location.get</p>
+                            }
+                            <p><b>Telefono:</b> @sucursal.tel</p>
+                            <p><b>Horario de atencion:</b> De @sucursal.attendanceTime</p>
+                        </div>
+                        <div class="col-sm-8">
+                            <img src="@routes.Assets.versioned("images/map1.jpg")" class="img-thumbnail" alt="Image" width="300">
+                        </div>
+                    </div>
+                </div>
+            }
+            </div>
+        </div>
+    </div>
+}

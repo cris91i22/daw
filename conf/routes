@@ -8,7 +8,7 @@ GET    /bolsones                    controllers.HomeController.bolsones
 GET    /frutas                      controllers.HomeController.frutas
 GET    /verduras                    controllers.HomeController.verduras
 GET    /sucursales                  controllers.HomeController.sucursales
-GET    /blog                        controllers.HomeController.blog
+GET    /faq                         controllers.HomeController.faq
 
 
 # Map static resources from the /public folder to the /assets URL path
@@ -17,6 +17,7 @@ GET     /assets/*file               controllers.Assets.versioned(path="/public",
 
 POST    /vegetables/bulk            controllers.AsyncController.vegetablesBulk
 POST    /contact                    controllers.ContactController.contact()
+GET     /moreQuestions              controllers.AsyncController.moreQuestions
 
 
 

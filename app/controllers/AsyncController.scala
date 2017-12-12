@@ -8,7 +8,7 @@ import play.api.libs.json._
 import play.api.mvc._
 import repository.VegetablesRepository
 
-import scala.concurrent.ExecutionContext
+import scala.concurrent.{ExecutionContext, Future}
 
 @Singleton
 class AsyncController @Inject()(cc: ControllerComponents,
@@ -22,6 +22,22 @@ class AsyncController @Inject()(cc: ControllerComponents,
     vegetablesRepository.insert("COCO", "BONGO", 10.0).map(k => Ok(Json.toJson(k)))
   }
 
+  def preguntasBulk() = Action.async { implicit request =>
+    import VegetableController._
+    import repository.handler.BSONDocumentHandlers._
+    vegetablesRepository.insert("COCO", "BONGO", 10.0).map(k => Ok(Json.toJson(k)))
+  }
+
+  def moreQuestions() = Action.async { implicit request =>
+    import Preguntas._
+    import repository.handler.BSONDocumentHandlers._
+    val respuestas = Seq(Respuesta("La verdad que la calidad del servicio es genial, hasta el dia de hoy no tuve problemas" +
+      "en contactar y en la mercaderia que me trajeron", "Juan Monaco", "15/01/2015"),
+      Respuesta("Hasta ahora cumplen con todo lo informado", "Ricardo Morales", "02/04/2016"))
+    val preguntas = Seq(Pregunta(1, "Como es la calidad del servicio?", "Mi huerta organica", "01/01/2015", respuestas))
+    Future.successful(Ok(Json.toJson(preguntas)))
+  }
+
 }
 
 object VegetableController {
@@ -31,4 +47,16 @@ object VegetableController {
       (JsPath \ "description").format[String] and
       (JsPath \ "price").format[Double]
   )(Vegetable.apply, unlift(Vegetable.unapply))
+}
+
+object Preguntas {
+  implicit val respuestaContract: Format[Respuesta] = Json.format[Respuesta]
+
+  implicit val preguntaContract: Format[Pregunta] = (
+    (JsPath \ "id").format[Int] and
+      (JsPath \ "description").format[String] and
+      (JsPath \ "owner").format[String] and
+      (JsPath \ "date").format[String] and
+      (JsPath \ "answers").format[Seq[Respuesta]]
+    )(Pregunta.apply, unlift(Pregunta.unapply))
 }

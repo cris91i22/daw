@@ -7,4 +7,14 @@ $(document).ready(function() {
         element.css("display", "none");
         $('#contact').append(element);
     })
+    $('#see-more').click(function () {
+        alert("ACAAAAAAAAAAAa");
+        $.get( "/moreQuestions", function(data) {
+            alert( "success" + data );
+            console.log(data);
+        })
+        .fail(function() {
+            alert( "error" );
+        });
+    })
 });
