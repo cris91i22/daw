@@ -31,3 +31,9 @@ case class Pregunta(id: String,
 case class Respuesta(description: String,
                      user: String,
                      date: String)
+
+case class Contact(bolsonId: String,
+                   name: String,
+                   email: String,
+                   contactNumber: String,
+                   delivery: Boolean)

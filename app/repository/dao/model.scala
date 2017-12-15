@@ -25,3 +25,11 @@ case class RespuestaDAO(_id: BSONObjectID,
                         description: String,
                         user: String,
                         date: String) extends Entity
+
+case class ContactDAO(_id: BSONObjectID,
+                      id: String,
+                      bolsonId: String,
+                      name: String,
+                      email: String,
+                      contactNumber: String,
+                      delivery: Boolean) extends Entity

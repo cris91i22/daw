@@ -1,11 +1,12 @@
 package repository.handler
 
 import reactivemongo.bson.{BSONDocument, BSONDocumentReader, BSONDocumentWriter, BSONObjectID, DefaultBSONHandlers, Macros}
-import repository.dao.{QuestionDAO, RespuestaDAO, VegetableDAO}
+import repository.dao.{ContactDAO, QuestionDAO, RespuestaDAO, VegetableDAO}
 
 object BSONDocumentHandlers extends DefaultBSONHandlers {
 
   implicit val vegetableHandler = Macros.handler[VegetableDAO]
+  implicit val contactHandler = Macros.handler[ContactDAO]
   implicit val respuestaHandler = Macros.handler[RespuestaDAO]
 
   implicit object QuestionWriter extends BSONDocumentWriter[QuestionDAO] {
