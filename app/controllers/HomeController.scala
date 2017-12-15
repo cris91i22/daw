@@ -1,10 +1,18 @@
 package controllers
 
 import javax.inject._
+
+import model._
 import play.api.mvc._
+import repository.QuestionsRepository
+
+import scala.concurrent.duration._
+import scala.concurrent.{Await, ExecutionContext}
 
 @Singleton
-class HomeController @Inject()(cc: ControllerComponents) extends AbstractController(cc) {
+class HomeController @Inject()(cc: ControllerComponents,
+                               questionsRepository: QuestionsRepository)(implicit exec: ExecutionContext)
+  extends AbstractController(cc) {
 
   def index = Action { implicit request =>
     Ok(views.html.index("Your new application is ready."))
@@ -36,21 +44,10 @@ class HomeController @Inject()(cc: ControllerComponents) extends AbstractControl
   }
 
   def faq = Action { implicit request =>
-    val respuestas = Seq(Respuesta("La verdad que la calidad del servicio es genial, hasta el dia de hoy no tuve problemas" +
-      "en contactar y en la mercaderia que me trajeron", "Juan Monaco", "15/01/2015"),
-      Respuesta("Hasta ahora cumplen con todo lo informado", "Ricardo Morales", "02/04/2016"))
-    val preguntas = Seq(Pregunta(1, "Como es la calidad del servicio?", "Mi huerta organica", "01/01/2015", respuestas))
+    import repository.handler.BSONDocumentHandlers._
+    val preguntas = Await.result(questionsRepository.findAll.map(_.take(3)), 3 seconds)
     Ok(views.html.faq(preguntas))
   }
 
 }
 
-case class Bolsones(id: String, name: String, contents: Seq[String], price: BigDecimal, img: String)
-
-case class Fruta(name: String, description: String)
-
-case class Sucursal(name: String, location: Option[String], tel: String, attendanceTime: String)
-
-case class Pregunta(id: Int, description: String, owner: String, date: String, answers: Seq[Respuesta])
-
-case class Respuesta(description: String, owner: String, date: String)

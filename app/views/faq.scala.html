@@ -1,5 +1,5 @@
-@import controllers.Pregunta
-@import controllers.Respuesta
+@import model.Pregunta
+@import model.Respuesta
 
 @(preguntas: Seq[Pregunta])
 
@@ -27,20 +27,20 @@
         <div class="container">
             <h2 class="title-FAQ">FAQ, Preguntas y respuestas</h2>
             <div class="panel-group">
-                <div class="panel panel-default">
+                <div id="faq-items" class="panel panel-default">
                     @for(pregunta <- preguntas) {
                         <div class="panel-heading" data-id="@pregunta.id">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#collapse1"># @pregunta.description</a>
-                                <p class="owner"> <b>Creador: </b>@pregunta.owner  <b>Fecha: </b>@pregunta.date</p>
+                                <a data-toggle="collapse" href="#collapse@preguntas.indexOf(pregunta)"># @pregunta.description</a>
+                                <p class="owner"> <b>Creador: </b>@pregunta.name  <b>Fecha: </b>@pregunta.date</p>
                             </h4>
                         </div>
-                        <div id="collapse1" class="panel-collapse collapse">
+                        <div id="collapse@preguntas.indexOf(pregunta)" class="panel-collapse collapse">
                             <ul class="list-group">
                             @for(respuesta <- pregunta.answers) {
                                 <li class="list-group-item">
                                     - @respuesta.description
-                                    <p class="owner"> <b>Creador: </b>@respuesta.owner  <b>Fecha: </b>@respuesta.date</p>
+                                    <p class="owner"> <b>Creador: </b>@respuesta.user  <b>Fecha: </b>@respuesta.date</p>
                                 </li>
                             }
                             </ul>

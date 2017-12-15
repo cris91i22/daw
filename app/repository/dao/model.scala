@@ -12,3 +12,16 @@ case class VegetableDAO(_id: BSONObjectID,
                         name: String,
                         description: String,
                         price: Double) extends Entity
+
+case class QuestionDAO(_id: BSONObjectID,
+                       id: String,
+                       name: String,
+                       description: String,
+                       date: String,
+                       answers: Seq[RespuestaDAO]) extends Entity
+
+case class RespuestaDAO(_id: BSONObjectID,
+                        id: String,
+                        description: String,
+                        user: String,
+                        date: String) extends Entity

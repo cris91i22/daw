@@ -16,6 +16,7 @@ GET     /assets/*file               controllers.Assets.versioned(path="/public",
 
 
 POST    /vegetables/bulk            controllers.AsyncController.vegetablesBulk
+POST    /preguntas/bulk             controllers.AsyncController.preguntasBulk
 POST    /contact                    controllers.ContactController.contact()
 GET     /moreQuestions              controllers.AsyncController.moreQuestions
 
