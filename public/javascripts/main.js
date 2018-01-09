@@ -40,6 +40,26 @@ $(document).ready(function() {
         .fail(function() {
             alert( "error" );
         });
+    });
+
+    var modal = $('#login');
+
+    $('#loginbtn').click(function () {
+        modal.css("display", "block");
+    });
+
+    modal.click(function () {
+        if (event.target == modal) {
+            modal.css("display", "none");
+        }
+    });
+
+    $('.close').click(function () {
+        modal.css("display", "none")
+    });
+
+    $('.cancelbtn').click(function () {
+        modal.css("display", "none")
     })
 });
 

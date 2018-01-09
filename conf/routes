@@ -20,6 +20,8 @@ POST    /preguntas/bulk             controllers.AsyncController.preguntasBulk
 POST    /contact                    controllers.ContactController.contact()
 GET     /moreQuestions              controllers.AsyncController.moreQuestions
 
+POST    /login                      controllers.AuthenticationController.authenticate
+
 
 
       

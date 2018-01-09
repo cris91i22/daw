@@ -15,7 +15,7 @@ class HomeController @Inject()(cc: ControllerComponents,
   extends AbstractController(cc) {
 
   def index = Action { implicit request =>
-    Ok(views.html.index("Your new application is ready."))
+    Ok(views.html.index(Nil))
   }
 
   def bolsones = Action { implicit request =>

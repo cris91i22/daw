@@ -1,6 +1,6 @@
 package controllers
 
-import javax.inject.Inject
+import javax.inject.{Inject, Singleton}
 
 import model.Contact
 import play.api.data.Form
@@ -11,6 +11,7 @@ import repository.ContactRepository
 
 import scala.concurrent.{ExecutionContext, Future}
 
+@Singleton
 class ContactController @Inject()(cc: ControllerComponents,
                                   contactRepository: ContactRepository)(implicit exec: ExecutionContext)
   extends AbstractController(cc) {
@@ -37,7 +38,7 @@ class ContactController @Inject()(cc: ControllerComponents,
       },
       contact => {
         log.info(s"El request fue satisfactorio $contact")
-        Ok(views.html.index("Your new application is ready."))
+        Ok(views.html.index(Nil))
         contactRepository.insert(contact.bolsonId, contact.name, contact.email, contact.contactNumber, contact.delivery)
           .map(_ => Redirect("/")).recover {
           case e: Exception => log.error("Hubo un error en procesar el contacto", e)

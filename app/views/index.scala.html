@@ -1,20 +1,48 @@
-@(message: String)
+@(messageError: Seq[String])(implicit request: RequestHeader)
+
+@authenticate = {
+    <div id="login" class="modal">
+        @helper.form(action = helper.CSRF(controllers.routes.AuthenticationController.authenticate())) {
+            <div class="imgcontainer">
+                <span class="close" title="Close Modal">&times;</span>
+            </div>
+
+            <div class="container2">
+                <label><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" name="uname" required>
+
+                <label><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="psw" required>
+
+                <button type="submit">Login</button>
+            </div>
+
+            <div class="container2">
+                <button type="button" class="cancelbtn">Cancel</button>
+            </div>
+        }
+    </div>
+}
 
 @main("") {
     <header>
+        @if(messageError.nonEmpty) {
+            <p class="invalid">@messageError.mkString(",")</p>
+        }
         <h1 class="title">Mi Huerta Orgánica</h1>
         <section class="acronym">
             <abbr class="title" title="Ventas al por mayor y por menor">Delivery de frutas y verduras</abbr>
         </section>
         <section>
             <ul id="main">
-                <li><a class="active" href="home.html">Home</a></li>
+                <li><a class="active" href="@controllers.routes.HomeController.index()">Home</a></li>
                 <li><a href="@controllers.routes.HomeController.bolsones()">Bolsones</a></li>
                 <li><a href="@controllers.routes.HomeController.frutas()">Frutas</a></li>
                 <li><a href="@controllers.routes.HomeController.verduras()">Verduras</a></li>
                 <li><a href="@controllers.routes.HomeController.sucursales()">Sucursales</a></li>
                 <li><a href="@controllers.routes.HomeController.faq()">FAQ</a></li>
-                <li class="myAccount"><a href="login.html">Mi Cuenta</a></li>
+                <li class="myAccount"><button id="loginbtn">Mi Cuenta</button></li>
+                @authenticate
             </ul>
         </section>
         <section>
